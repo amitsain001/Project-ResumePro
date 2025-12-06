@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= resume.fullName %> - Resume</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="/CSS/designed.css">
+</head>
+
+<style>
+  .flashcontainer {
+    flex: 1 ;
+    position: fixed ;
+    z-index: 10000 ;
+    display: flex ;
+    width: 80% ;
+    justify-content: center ;
+  }
+</style>
+
+<body>
+
+  <div class="flashcontainer">
+        <%- include ("../includes/flash.ejs") %>  <!-- flash ejs file --> 
+  </div>
+
+  <div class="resume">
+    <!-- Left Sidebar -->
+    <div class="left-section">
+      <% if (resume.profileImage) { %>
+        <div class="profile-photo">
+          <img src="<%= resume.profileImage %>" alt="Profile Image">
+        </div>
+      <% } %>
+
+      <div class="left-content">
+        <h3>Skills</h3>
+        <ul>
+          <% resume.skills.forEach(skill => { %>
+            <li><%= skill %></li>
+          <% }) %>
+        </ul>
+
+        <h3>Languages</h3>
+        <ul>
+          <% if (resume.languages && resume.languages.length > 0) { %>
+            <% resume.languages.forEach(lang => { %>
+              <li><%= lang %></li>
+            <% }) %>
+          <% } else { %>
+            <li>English</li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Content -->
+    <div class="right-section">
+      <div class="header">
+        <h1><%= resume.fullName %></h1>
+        <p class="role"><%= resume.role || "Business Development Manager" %></p>
+        <p class="contact">
+          <%= resume.address || "4200 Patterno Avenue, New York, NY 10471, United States" %><br>
+          <%= resume.phone %> |
+          <a href="mailto:<%= resume.email %>"><%= resume.email %></a>
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Profile</h2>
+        <p><%= resume.summary %></p>
+      </div>
+
+      <div class="section">
+        <h2>Employment History</h2>
+        <% resume.experience.forEach(exp => { %>
+          <div class="job">
+            <h3><%= exp.role %>, <%= exp.company %></h3>
+            <p class="date"><%= exp.startDate %> — <%= exp.endDate %></p>
+            <ul>
+              <% if (exp.description) { %>
+                <% exp.description.split('.').forEach(line => { %>
+                  <% if (line.trim()) { %><li><%= line.trim() %>.</li><% } %>
+                <% }) %>
+              <% } %>
+            </ul>
+          </div>
+        <% }) %>
+      </div>
+
+      <div class="section">
+        <h2>Education</h2>
+        <% resume.education.forEach(e => { %>
+          <div class="edu">
+            <h3><%= e.degree %>, <%= e.institution %></h3>
+            <p class="date"><%= e.startYear %> — <%= e.endYear %></p>
+            <% if (e.description) { %><p><%= e.description %></p><% } %>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <!-- Download button (visible on web, hidden in PDF) -->
+
+  </div>
+
+  <div class="download-wrap no-print">
+      <a href="/download/<%= resume._id %>" class="download-btn">Download as PDF</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

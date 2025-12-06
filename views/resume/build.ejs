@@ -1,0 +1,415 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/CSS/style.css" >
+
+<%- include ("../includes/navbar.ejs") %>  <!-- navbar ejs file -->
+
+<div class="flashcontainer">
+    <%- include ("../includes/flash.ejs") %>  <!-- flash ejs file --> 
+</div>
+
+<style>
+
+    .buildcontainer {
+        min-height: 100vh ;
+        width : 100% ;
+        padding: 3rem ;
+        margin: 0 ;
+        background: white ;
+        display: flex ;
+        justify-content : space-between ;
+        flex-wrap: wrap ;
+        align-items: center ;
+        box-sizing: border-box ;
+
+    }
+
+    .buildcontainersec {
+        min-height: 100vh ;
+        width : 100% ;
+        margin: 0 ;
+        padding: 0 ;
+        background: white ;
+        display: flex ;
+        justify-content : space-evenly ;
+        flex-wrap: wrap ;
+        align-items: center ;
+        box-sizing: border-box ;
+    }
+
+    .buildheading {
+        width : 100% ;
+        background-color: #6567f1 ;
+        padding: 1rem ;
+        color: white ;
+    }
+
+    .templatelist {
+        position: relative ;
+        min-height: 80vh ;
+        width: 100% ;
+        padding: 1rem ;
+        display: flex ;
+        justify-content: center ;
+        flex-wrap: wrap ;
+        margin-bottom: 1rem ;
+        border-radius: 2rem;
+    }
+
+    .template:hover .choosetempbtn {
+        opacity: 1 ;
+    }
+
+    .template:hover {
+        opacity: 0.8 ;
+    }
+
+    .template {
+        position: relative ;
+        width: 300px;
+        height: 500px;   
+        margin: 10px ; 
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4),
+                    0 6px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .template:hover {
+        transform: translateY(-10px);
+    }
+
+    .tempselect {
+        position: absolute ;
+        z-index: 2000 ;
+        top: 250 ;
+        height: 2rem ;
+        background-color: brown ;
+        padding: 2px ;
+        border-radius: 5px ;
+    }
+
+    .template img {
+        position: relative ;
+        height: 100% ; 
+        width : 100% ;
+    }
+
+    .choosetempbtn {
+        position: absolute ;
+        top: 50% ;
+        left: 40 ;
+        width: 70% ;
+        height : 35px ;
+        display: flex ;
+        justify-content: center ;
+        align-items: center ;
+        background-color: rgb(88, 54, 54) ;
+        border-radius: 1rem ;
+        opacity: 0 ;
+    }
+
+    .choosetempbtn a {
+        text-decoration: none ;
+        color: white ;
+    }
+
+    .resumetips {
+        position: relative ;
+        min-height: 80vh ;
+        width: 70% ;
+        padding: 2rem ;
+        margin-bottom: 2rem ;
+        display: flex ;
+        justify-content: center ;
+        flex-wrap: wrap ;
+        background-color: rgb(255, 255, 255) ;
+     
+    }
+
+    .subpoints h1 {
+        color: #B1B2FF; 
+    }
+
+    .sideattach {
+        position: sticky ;
+        top: 70 ;
+        bottom: 50;
+        min-height: 80vh ;
+        width: 20rem ;
+        margin-bottom: 2rem ;
+        display: flex ;
+        justify-content: center ;
+        background-color: rgb(255, 255, 255) ;
+    }
+
+    .sideattach img {
+        
+        height: 100vh ; 
+        width : 100% ;
+
+    }
+
+    .sidetext {
+        position: absolute ;
+        bottom: 0 ;
+        display: flex ;
+        justify-content: center ;
+        align-items: center ;
+        flex-wrap: wrap ;
+        padding: 10px ;
+        width: 100% ;
+        background-color: white ;
+        display: flex ;
+        justify-content: center ;
+        text-align: center ;
+    }
+
+    .sidetextbtn {
+        background-color: black ;
+        position: relative;
+        width: 100% ;
+        height: 40px  ;
+        color: white ;
+        display: flex ;
+        align-items: center ;
+        justify-content: center ;
+    }
+
+    .buildmid {
+        position: relative ;
+        display: flex ;
+        justify-content: space-evenly ;
+        flex-wrap: wrap ;
+        align-items: center ;
+        min-height: 70vh ;
+        width: 100% ;
+        background: linear-gradient( 90deg , #ffffff 0% , #6567f1  100% ) ;
+        padding: 2rem 4rem 2rem 4rem ;
+    }
+
+    .buildtext {
+        position: relative ;
+        width: 50% ;
+        height : 50vh ;
+        padding: 2.5rem ;
+        display: flex ;
+        justify-content: center ;
+        flex-wrap: wrap ;
+    }
+
+    .buildmidimg {
+        position: relative ;
+        width: 50% ;
+        height : 60vh ;
+        padding: 1rem ;
+        display: flex ;
+        justify-content: center ;
+    }
+
+    .buildmidbtn {
+        position: relative;
+        width: 100% ;
+        height: 2rem ;
+        background-color: #6567f1 ;
+        color: white ;
+        display: flex ;
+        justify-content: center;
+        text-align: center ;
+        padding: 2px ;
+        border-radius: 5px ;
+        cursor: pointer ;
+    }
+
+    .buildmidbtn:hover {
+        background-color: #282bec ;
+    }
+
+    .buildmidimg img {
+        background-size: cover ;
+        transform: scale(1.3);
+    }
+
+    @media ( max-width: 448px ) {
+        .template {
+            width : 400px ;
+            padding: 0 ;
+            height: 400px ;
+        }
+
+        .templatelist {
+            padding-left: 0 ;
+            padding-right: 0 ;
+        }
+
+        .choosetempbtn {
+            left: 40 ;
+        }
+        
+        .resumetips {
+            width : 100% ;
+        }
+
+        .buildcontainer {
+            padding: 1.5rem ;
+        }
+
+        .buildmid {
+            padding-left: 1rem ;
+            padding-right: 1rem ;
+            min-height: 10vh ;
+        }
+
+        .buildmidimg img {
+            background-size: cover ;
+            transform: scale(0.8);
+        }
+
+        .buildtext {
+            padding: 0 ;
+            width: 100% ;
+            height: 50vh ;
+            margin: 1rem ;
+        }
+
+    }
+
+</style>
+
+<!----------------------------------- Build Route Design ----------------------------------------->
+
+<div class="buildheading">
+    <h1><b>Resume Templates</b></h1>
+    <p>
+        Start by selecting one of our professional resume templates, then use our AI resume builder to create your resume in minutes. ResumePro provides expertly designed layouts, ATS-friendly formatting, and customizable features highlighting your skills and accomplishments. Whether in a modern, traditional, or creative field, our templates will help you stand out and make a lasting impression.
+    </p>
+</div>
+
+<div class="buildcontainer">
+    <div class="templatelist">
+        
+        <!-- Creative template -->
+
+        <div class="simple template" onclick = "selectTemplate('simple')">
+            <img src="./image/template1.avif" alt="Simple Template" >  
+            <div class="choosetempbtn">
+                <a href="/build/simple">choose simple template</a>
+            </div>
+        </div>
+
+        <div class="modern template"  onclick = "selectTemplate('modern')" >
+            <img src="./image/template2.png" alt="Modern Template" > 
+            <div class="choosetempbtn">
+                <a href="/build/modern">choose modern template</a>
+            </div>
+        </div>
+
+        <div class="classic template" onclick = "selectTemplate('classic')" >
+            <img src="./image/template3new.webp" alt="Classic Template" > 
+            <div class="choosetempbtn">
+                <a href="/build/classic">choose classic template</a>
+            </div>
+        </div>
+
+        <div class="creative template" onclick = "selectTemplate('creative')" >
+            <img src="./image/template4.jpg" alt="Creative Template"> 
+            <div class="choosetempbtn">
+                <a href="/build/creative">choose creative template</a>
+            </div>
+        </div>
+
+        <div class="designed template" onclick = "selectTemplate('designed')" >
+            <img src="./image/template5.webp" alt="Designed Template" > 
+            <div class="choosetempbtn">
+                <a href="/build/designed">choose designed template</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="buildmid">
+
+    <div class="buildmidimg">
+        <img src="./image/buildend.png">
+    </div>
+
+    <div class="buildtext">
+        <h1><b>So much more then a resume builder</b></h2>
+        <p>When you build your resume, you get access to 18 powerful career tools. It’s the complete career toolkit, all in one place. If you’re here, you’re already on the way up.</p>
+        <div class="buildmidbtn">
+            <p>Elevate Your Profile</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="buildcontainersec">
+
+    <div class="resumetips">
+
+        <div class="subpoints">
+            <h1><b>Basic Resume Template Tips</b></h1>
+            <p>When applying for jobs, simple resume templates are ideal for showcasing your qualifications without distractions. Professionals in any industry can benefit from using <b>simple resumes</b> to keep their qualifications clear and concise. Selecting basic resume templates can help you organize your skills and experience effectively.</p>
+        </div>
+
+        <div class="sub">
+            <h3><b>Focus on readability structure and organization</b></h3>
+            <p>When selecting your resume template, structure and organization should be your primary focus. Choose a basic resume template that balances readability and professional design.</p>
+            <p>Studies show that employers and recruiters spend an average of 7.4 seconds during the initial resume screening. Prospective employers want to see templates that allow them to easily scan your resume for key skills, qualifications, and accomplishments. Select an option that has enough white space between your sections, but also doesn’t appear barren.</p>
+        </div>
+
+        <div class="sub">
+            <h3><b>Avoid flashy colors and graphics</b></h3>
+            <p>Although flashy colors and graphics may seem visually appealing, you should always prioritize readability over aesthetics when selecting your template. These elements are indeed eye-catching, but they can also have the opposite effect of what you’re hoping for. Stick to a basic template to avoid distracting readers with unnecessary visuals.</p>
+            <p>Strong visual elements run the risk of distracting the reader from your content, which is the most important aspect of your application. If your document is overly cluttered with graphics, this can also negatively impact the overall structure of your resume. To ensure your resume remains professional, explore the best resume formats that focus on structure over aesthetics.</p>
+        </div>
+
+        <div class="sub">
+            <h3><b>Use a single-column template</b></h3>
+            <p>Many modern templates use multiple columns featuring various sections concurrently across the page. This is generally not an advisable format for most job seekers, as it makes for a confusing reading experience. A simple, top-down approach that uses single columns allows the hiring manager to read through your content in a clear sequence. This enables you to fully prioritize what sections and information the reader sees first.</p>
+            <p>A single-column template allows readers to follow your content clearly; learn more about how to make a resume that prioritizes structure.</p>
+        </div>
+
+        <div class="sub">
+            <h3><b>Select a simple elegant font</b></h3>
+            <p>Choose a simple format with a traditional font that allows prospective employers to easily scan your resume for experience, qualifications, and skills that match the job description. Garamond, Calibri, and Cambria are all strong options that are easy to read while possessing visual appeal.</p>
+            <p>Be sure to select a font size that is readable, but still allows you to capture all of your relevant qualifications in two pages or less. For the perfect font choice, refer to The Best Fonts for Your Resume to balance visual appeal with readability.</p>
+        </div>
+
+        <div class="sub">
+            <h3><b>Structure your template based on your experience</b></h3>
+            <p>If you’re a senior-level executive, you’d want a template that allows you to highlight your awards, associations, and professional certifications prominently. Take the time to find a format that allows you to display the most compelling aspects of your career prominently.</p>
+        </div>
+        
+    </div>
+
+    <div class="sideattach">
+        <img src="./image/sideattach.jpeg">
+        <div class="sidetext">
+            <h4><b>Build your resume in 15 min.</b></h4>
+            <p>Use professional field-tested resume templates that follows the exact resume rules employes look for</p>
+            <div class="sidetextbtn">
+                Create Now
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!---------------------------------------- Script Link --------------------------------------------->
+
+<script>
+  function selectTemplate(type) {
+    window.location.href = `/build/${type}`;
+  }
+</script>
+
+<%- include ("../includes/footer.ejs") %>  <!-- navbar ejs file -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="../js/script.js" ></script>
+
+
+

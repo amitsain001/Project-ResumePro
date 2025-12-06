@@ -1,0 +1,242 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/CSS/style.css" >
+
+<%- include ("../includes/navbar.ejs") %>  <!-- navbar ejs file -->
+
+<div class="flashcontainer">
+    <%- include ("../includes/flash.ejs") %>  <!-- flash ejs file --> 
+</div>
+
+<style>
+
+    .signupcontainer {
+
+        min-height: 100vh ;
+        width : 100% ;
+        padding: 3rem ;
+        margin: 0 ;
+        background: linear-gradient( 135deg , #667eea 0% ,#764ba2 100% ) ;
+        display: flex ;
+        justify-content : center ;
+        align-items: center ;
+        box-sizing: border-box ;
+        
+    }
+
+    .signupleft {
+        width : 50% ;
+        min-height : 100vh ;
+        background-color: white ; 
+        padding: 7rem 2rem ;
+        margin: 0.5rem ;
+        display: flex ;
+        justify-content: space-between ;
+        align-items: center ;
+        flex-wrap: wrap;
+        background: linear-gradient( 135deg , #c4ccf0 0% ,#aa80d4 100% ) ;
+    }
+    
+    .signupleft img {
+        width: 10rem ;
+        position: relative ;
+        height: fit-content;
+    }
+
+    .signupright {
+        width : 50% ;
+        min-height : 100vh ;
+        background-color: white ; 
+        padding: 2rem  ;
+        padding-top: 1rem ;
+        padding-bottom: 1rem ;
+        margin: 0.5rem;
+        background: linear-gradient( 135deg , #c4ccf0 0% ,#aa80d4 100% ) ;
+        display: flex ;
+        justify-content: center ;
+        align-items: center ;
+        flex-wrap: wrap;
+    }
+
+    #accexist {
+        text-decoration: none ;
+    }
+
+    .signupform {
+        position: relative ;
+        width : 100% ;
+        padding: 1rem ;
+        background-color: rgb(56, 4, 72) ;
+        opacity: 0.7;
+        border-radius: 10px ;
+    }
+
+    .signupform form {
+        color: rgb(252, 250, 254) ;
+    }
+
+    .signupbtn {
+        width : 100% ;
+        position: relative ;
+        display: flex ;
+        justify-content: center ;
+        margin: 1rem 0 ;
+    }
+
+    .signuplogotag {
+        width : 100% ;
+        position: relative ;
+    }
+
+    .btn-success {
+        border: none ;
+        background: linear-gradient( 135deg , #667eea 0% ,#764ba2 100% ) ;
+        width: 70% ;
+        transition: width 0.3s ease;
+    }
+
+    .btn-success:hover {
+        width: 90% ;
+        background: linear-gradient( 135deg , #d7dae6 0% ,#935ec9 100% ) ;
+    }
+
+
+    ul {
+        padding: 0 ;
+    }
+
+    .fa-circle-check {
+        color: rgb(134, 127, 242) ;
+    }
+
+    .userinput input {
+        padding : 8px ;
+    }
+
+    .logo {
+        width : 50% ;
+        position: relative ;
+        display: flex ;
+    }
+
+    .confirmation {
+        display: flex;
+        width : 100% ;
+        justify-content: space-between ;
+        align-items: center ;
+    }
+
+    .confirmation span {
+        font-size: 13px ;
+    }
+
+    .confirmation a {
+        text-decoration: none ;
+    }
+
+    #confirmationdiv {
+        margin: 2px;
+    }
+
+    
+
+    @media ( max-width : 600px ) {
+        .signupcontainer {
+            flex-direction: column ;
+            padding: 1.25rem ;
+            min-height: 260px ;
+        }
+
+        .signupleft , .signupright {
+            width : 100% ;
+        }
+
+        .signupform {
+            width : 100% ;
+        }
+
+        .signiupright {
+            padding: 1rem ;
+        }
+
+    }
+    
+</style>
+
+
+<div class="signupcontainer">
+
+    <div class="signupleft">
+
+        <h2><b>Join ResumePro <br>Today</b></h2>
+        <p>Create a professional resume in minutes with our easy-to-use builder. Stand out from the crowd and land your dream job.</p>
+        
+        <ul>
+            <p><i class="fa-solid fa-circle-check"></i> Professional resume templates</p>
+            <p><i class="fa-solid fa-circle-check"></i> Easy customization and editing</p>
+            <p><i class="fa-solid fa-circle-check"></i> Multiple format downloads</p>
+            <p><i class="fa-solid fa-circle-check"></i> Job tracking and management</p>
+        </ul>
+
+    </div>
+
+    <!-- Signup right -->
+
+    <div class="signupright">
+
+        <div class="signuplogotag">
+            <h2><b>Create Your Account</b></h2>
+            <p>Sign up to get started with your professional resume</p>
+        </div>
+
+        <div class="signupform">
+
+            <form action="/resume/signup" method="POST" class="needs-validation" novalidate>
+
+                <div class="mb-3 userinput">
+                    <label for="username" class="form-label">Username</label>
+                    <i class="fa-solid fa-user"></i>
+                    <input name="username" id="username" type="text" placeholder="Enter your username" class="form-control" required>
+                </div>
+
+                <div class="mb-3 userinput">
+                    <label for="email" class="form-label">Email</label>
+                    <i class="fa-solid fa-envelope"></i>
+                    <input name="email" id="email" type="text" placeholder="Enter your email" class="form-control" required>
+                </div>
+
+                <div class="mb-3 userinput">
+                    <label for="password" class="form-label">Password</label>
+                    <i class="fa-solid fa-lock"></i>
+                    <input name="password" id="password" type="password" placeholder="Enter your password" class="form-control" required>
+                </div>
+
+                <div class="confirmation">
+                    <div id="confirmationdiv">
+                        <input type="checkbox">
+                        <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                    </div>
+
+                </div>
+
+                <div class="signupbtn">
+                    <button class="btn btn-success">Create Account</button>
+                </div>
+            </form>
+
+        </div>
+
+        <p>Already have an account?<a href="/resume/login" id="accexist">Login</a></p>
+
+    </div>
+
+</div>
+
+<!---------------------------------------- Script Link --------------------------------------------->
+
+<%- include ("../includes/footer.ejs") %>  <!-- navbar ejs file -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="../js/script.js" ></script>
+

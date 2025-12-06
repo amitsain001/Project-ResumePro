@@ -1,0 +1,26 @@
+/* public/css/contact.css */
+body { 
+    background: #f6f8fb; 
+    color: #222; 
+}
+
+.card { 
+    border-radius: 12px; 
+}
+
+.card .form-label { 
+    font-weight: 600; 
+}
+
+.card .btn-primary { 
+    border-radius: 8px; 
+    padding: .5rem 1.1rem; 
+}
+
+.alert { 
+    border-radius: 8px; 
+}
+
+iframe { 
+    border-radius: 12px; 
+}

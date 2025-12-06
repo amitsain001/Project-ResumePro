@@ -1,0 +1,226 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/CSS/style.css" >
+
+<%- include ("../includes/navbar.ejs") %>  <!-- navbar ejs file -->
+
+<div class="flashcontainer">
+    <%- include ("../includes/flash.ejs") %>  <!-- flash ejs file --> 
+</div>
+
+<style>
+
+    .logincontainer {
+
+        min-height: 100vh ;
+        width : 100% ;
+        padding: 3rem ;
+        margin: 0 ;
+        background: linear-gradient( 135deg , #667eea 0% ,#764ba2 100% ) ;
+        display: flex ;
+        justify-content : center ;
+        align-items: center ;
+        box-sizing: border-box ;
+        
+    }
+
+    .loginleft {
+        width : 50% ;
+        min-height : 80vh ;
+        background-color: white ; 
+        padding: 4rem 2rem ;
+        margin: 0.5rem ;
+        display: flex ;
+        justify-content: space-between;
+        align-items: center ;
+        flex-wrap: wrap;
+        background: linear-gradient( 135deg , #c4ccf0 0% ,#aa80d4 100% ) ;
+    }
+    
+    .loginleft img {
+        width: 10rem ;
+        position: relative ;
+        height: fit-content;
+    }
+
+    .loginright {
+        width : 50% ;
+        min-height : 80vh ;
+        background-color: white ; 
+        padding: 2rem ;
+        margin: 0.5rem;
+        background: linear-gradient( 135deg , #c4ccf0 0% ,#aa80d4 100% ) ;
+        display: flex ;
+        justify-content: center ;
+        align-items: center ;
+        flex-wrap: wrap;
+    }
+
+    .loginform {
+        position: relative ;
+        width : 70% ;
+        padding: 1rem ;
+        background-color: rgb(56, 4, 72) ;
+        opacity: 0.7;
+        border-radius: 10px ;
+    }
+
+    .loginform form {
+        color: rgb(252, 250, 254) ;
+    }
+
+    .loginbtn {
+        width : 100% ;
+        position: relative ;
+        display: flex ;
+        justify-content: center ;
+        margin: 4px ;
+    }
+
+    .btn-success {
+        border: none ;
+        background: linear-gradient( 135deg , #667eea 0% ,#764ba2 100% ) ;
+        width: 30% ;
+        transition: width 0.3s ease;
+    }
+
+    .btn-success:hover {
+        width: 50% ;
+        background: linear-gradient( 135deg , #d7dae6 0% ,#935ec9 100% ) ;
+    }
+
+
+    ul {
+        padding: 0 ;
+    }
+
+    .fa-circle-check {
+        color: rgb(134, 127, 242) ;
+
+    }
+
+    .logo {
+        width : 50% ;
+        position: relative ;
+        display: flex ;
+    }
+
+    #lefttaglogin {
+        width: 100% ;
+        position: relative ;
+        margin: 1rem 0 ;
+    }
+
+    .confirmation {
+        display: flex;
+        width : 100% ;
+        justify-content: space-between ;
+        align-items: center ;
+    }
+
+    .confirmation a {
+        text-decoration: none ;
+    }
+
+    #confirmationdiv {
+        margin: 2px;
+    }
+
+    #accexist {
+        text-decoration: none ;
+    }
+
+    @media ( max-width : 600px ) {
+        .logincontainer {
+            flex-direction: column ;
+            padding: 1.25rem ;
+            min-height: 260px ;
+        }
+
+        .loginleft , .loginright {
+            width : 100% ;
+        }
+
+        .loginform {
+            width : 100% ;
+        }
+
+        .loginright {
+            padding: 1rem ;
+        }
+
+    }
+    
+</style>
+
+
+<div class="logincontainer">
+
+    <div class="loginleft">
+
+        <div id="lefttaglogin">
+            <h3><b><i class="fa-solid fa-kaaba"></i> ResumePro</b></h3>
+        </div>
+
+        <h2><b>Welcome Back!</b></h2>
+
+        <p>Sign in to access your account and continue your journey with us. Manage your projects, collaborate with teams, and achieve your goals.</p>
+        
+        <ul>
+            <p><i class="fa-solid fa-shield-halved"></i> Secure & reliable authentication</p>
+            <p><i class="fa-solid fa-bolt"></i> Fast and easy access to your workspace</p>
+            <p><i class="fa-solid fa-people-group"></i> Connect with your team seamlessly</p>
+        </ul>
+
+    </div>
+
+    <div class="loginright">
+
+        <h2><b>USER LOGIN</b></h2>
+
+        <div class="loginform">
+
+            <form action="/login" method="POST" class="needs-validation" novalidate>
+
+                <div class="mb-3 userinput">
+                    <label for="username" class="form-label">Username</label>
+                    <i class="fa-solid fa-user"></i>
+                    <input name="username" id="username" type="text" placeholder="Enter your username" class="form-control" required>
+                </div>
+
+                <div class="mb-3 userinput">
+                    <label for="password" class="form-label">Password</label>
+                    <i class="fa-solid fa-lock"></i>
+                    <input name="password" id="password" type="password" placeholder="Enter your password" class="form-control" required>
+                </div>
+
+                <div class="confirmation">
+                    <div id="confirmationdiv">
+                        <input type="checkbox" required>
+                        <span>Remember me</span>
+                    </div>
+
+                    <a href="#">forgot passward?</a>
+                </div>
+
+                <div class="loginbtn">
+                    <button class="btn btn-success">Login</button>
+                </div>
+            </form>
+
+        </div>
+
+        <p>Can't having an Account?<a href="/resume/signup" id="accexist">Signup</a></p>
+
+    </div>
+
+</div>
+
+<!---------------------------------------- Script Link --------------------------------------------->
+
+<%- include ("../includes/footer.ejs") %>  <!-- navbar ejs file -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="../js/script.js" ></script>
+

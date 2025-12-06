@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Resumes</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Your custom CSS (optional) -->
+  <link rel="stylesheet" href="/CSS/myresume.css">
+
+  <style>
+    /* small fallback styling if myresume.css isn't loaded */
+    .resume-card { transition: transform .12s ease, box-shadow .12s ease; }
+    .resume-card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,.08); }
+  </style>
+</head>
+<body>
+
+    <div class="container py-5">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0">My Resumes</h1>
+
+            <a href="/build" class="btn btn-outline-primary">
+                <i class="fa fa-plus me-2"></i> Create New
+            </a>
+
+            <!-- Delete All form triggers the modal -->
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteAllModal">
+                <i class="fa fa-trash-alt me-1"></i> Delete All
+            </button>
+        
+        </div>
+
+    </div>
+
+        <!-- Confirm Delete All Modal -->
+    <div class="modal fade" id="confirmDeleteAllModal" tabindex="-1" aria-labelledby="confirmDeleteAllLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <form id="deleteAllForm" action="/resumes/delete-all" method="POST">
+                <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteAllLabel">Delete All Resumes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                <p class="mb-2">Are you sure you want to permanently delete <strong>all</strong> of your resumes? This action cannot be undone.</p>
+
+                <!-- optional extra confirmation field to avoid accidents -->
+                <div class="mb-0">
+                    <label for="confirmText" class="form-label small text-muted">Type <code>DELETE</code> to confirm</label>
+                    <input id="confirmText" name="confirmText" class="form-control" placeholder="DELETE" autocomplete="off"/>
+                </div>
+                </div>
+
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button id="confirmDeleteAllBtn" type="submit" class="btn btn-danger" disabled>Delete All</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <% if (!resumes || resumes.length === 0) { %>
+      <div class="card shadow-sm p-4 text-center">
+        <h4 class="mb-2">No resumes yet</h4>
+        <p class="mb-3 text-muted">Create your first resume — choose a template and start customizing.</p>
+        <a href="/build" class="btn btn-primary">Build a Resume</a>
+      </div>
+    <% } else { %>
+
+      <!-- Grid: responsive cards -->
+      <div class="row g-3">
+        <% resumes.forEach(r => { %>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card resume-card h-100 shadow-sm">
+              <!-- header / thumbnail -->
+              <div class="card-header d-flex align-items-center gap-3">
+                <div class="avatar rounded-circle bg-primary text-white d-flex align-items-center justify-content-center"
+                     style="width:48px;height:48px;font-weight:700;font-size:18px;">
+                  <%= (r.fullName && r.fullName[0]) ? r.fullName[0].toUpperCase() : 'U' %>
+                </div>
+                <div class="flex-grow-1">
+                  <h5 class="mb-0" style="font-size:1rem;"><%= r.fullName || 'Unnamed' %></h5>
+                  <small class="text-muted"><%= r.email || '' %></small>
+                </div>
+                <div class="text-end">
+                  <small class="text-muted d-block"><%= (r.createdAt) ? new Date(r.createdAt).toLocaleDateString() : '' %></small>
+                  <small class="badge bg-light text-dark" style="font-size:.72rem;"><i class="fa fa-layer-group me-1"></i><%= r.templateType || '—' %></small>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <!-- short summary if available -->
+                <% if (r.summary) { %>
+                  <p class="card-text text-truncate" title="<%= r.summary %>"><%= r.summary %></p>
+                <% } else { %>
+                  <p class="card-text text-muted small mb-0">No summary added.</p>
+                <% } %>
+
+                <!-- small stats -->
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <span class="badge bg-secondary"><i class="fa fa-graduation-cap me-1"></i> <%= r.education ? r.education.length : 0 %></span>
+                  <span class="badge bg-secondary"><i class="fa fa-briefcase me-1"></i> <%= r.experience ? r.experience.length : 0 %></span>
+                  <span class="badge bg-secondary"><i class="fa fa-code me-1"></i> <%= r.skills ? r.skills.length : 0 %></span>
+                </div>
+              </div>
+
+              <div class="card-footer bg-white d-flex gap-2">
+                <!-- View uses your render-by-id route -->
+                <a href="/resumes/<%= r._id %>" class="btn btn-sm btn-outline-primary flex-grow-1">
+                  <i class="fa fa-eye me-1"></i> View
+                </a>
+
+                <a href="/resumes/<%= r._id %>/edit" class="btn btn-sm btn-outline-secondary">
+                  <i class="fa fa-edit"></i>
+                </a>
+
+                <!-- Delete: uses POST form for safety -->
+                <form action="/resumes/<%= r._id %>/delete" method="POST" class="d-inline delete-form">
+                  <!-- If you use method-override, use hidden _method input for DELETE -->
+                  <button type="submit" class="btn btn-sm btn-danger btn-delete" title="Delete">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- small footer / pagination placeholder -->
+      <div class="mt-4 d-flex justify-content-between align-items-center">
+        <p class="text-muted mb-0">Showing <strong><%= resumes.length %></strong> resumes</p>
+        <!-- Add pagination here if needed -->
+      </div>
+
+    <% } %>
+  </div>
+
+  <!-- Bootstrap JS + Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- tiny client-side delete confirm -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelectorAll('.delete-form').forEach(form => {
+        form.addEventListener('submit', function(e){
+          const confirmed = confirm('Are you sure you want to permanently delete this resume? This cannot be undone.');
+          if (!confirmed) e.preventDefault();
+        });
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const confirmInput = document.getElementById('confirmText');
+        const submitBtn = document.getElementById('confirmDeleteAllBtn');
+
+        if (confirmInput && submitBtn) {
+            confirmInput.addEventListener('input', function () {
+            // require exact match (case-insensitive)
+            const ok = confirmInput.value.trim().toUpperCase() === 'DELETE';
+            submitBtn.disabled = !ok;
+        });
+    }
+    });
+
+  </script>
+</body>
+</html>
+

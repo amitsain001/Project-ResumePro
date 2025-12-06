@@ -1,0 +1,338 @@
+<div class="header">
+
+    <!------------------------------------- Intro Section --------------------------------------->
+
+    <div class="headercontent">
+
+        <div class="headertitle">
+
+            <h1>Craft a Professional Resume in Minutes <br>with <span>ResumePro</span></h1>
+            <p>Your Career, Your Story — Perfectly Written.</p>
+            <h2>Try it for free</h2>
+
+            <div class="headerbtn">
+                
+                <div class="headerdiv">
+                    <a href="/build">Create new resume</a>
+                </div>
+
+                <div class="headerdiv">
+                    <a href="#"  onclick="showPopup()">Resume ATS Checker</a>
+                </div>
+
+                <!-- <form action="#" method="GET">
+                    <button type="button" class="btn btn-outline-primary importresume">Import My Resume</button>
+                </form> -->
+
+            </div>
+
+            <div class="card text-center shadow-sm border-0" style="max-width: 400px; margin: 0; border-radius: 1rem;">
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-bold mb-3">39% more likely to land the job</h5>
+                    <div class="d-flex justify-content-center align-items-center mb-2">
+                    <!-- Stars -->
+                    <span class="text-warning fs-5 me-2">★★★★☆</span>
+                    <span class="fw-semibold text-dark">4.4 out of 5</span>
+                    </div>
+                    <p class="card-text text-muted mb-0">Based on 37,389 reviews</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="headerimg">
+            <img src="/image/resumechecker.avif">
+        </div>
+        
+        <div class="headerend"></div>
+
+    </div>
+
+</div>
+
+<!------------------------------------- Intro Section --------------------------------------->
+
+<div class="numberscontainer">
+
+    <div class="file">
+        <i class="fa-solid fa-file-pdf"></i>
+    </div>
+
+    <div class="counterinfo">
+    
+        <div class="number"><p>30,121</p></div>
+        <div class="numberlabel"><p>resume built using ResumePro</p></div>
+
+    </div>
+
+</div>
+
+<!-------------------------------------- Success Container ----------------------------------> 
+
+<div class="success-container">
+    <!-- Stats Section -->
+    <div class="stats-section">
+        <div class="percentage">38%</div>
+        <div class="stats-text">more likely to get a job offer</div>
+            
+        <div class="benefits">
+            <div class="benefit-item">
+                <i class="fas fa-chart-line"></i>more interviews
+            </div>
+            <div class="benefit-item">
+                <i class="fas fa-briefcase"></i>faster hiring process
+            </div>
+        </div>
+    </div>
+
+        <!-- Scrolling Companies Section -->
+    <div class="companies-section">
+        <div class="section-title">Subscribers have been hired by:</div>
+        <div class="scrolling-companies">
+            <div class="scrolling-wrapper" id="scrolling-companies">
+                <!-- Company items will be duplicated by JavaScript -->
+            </div>
+            <div class="scrolling-wrapper clone" id="scrolling-companies-clone"></div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <div class="features-title">Create professional resumes anywhere</div>
+        <div class="features-text">
+            A professional resume from your phone, laptop, or tablet, plus take advantage of expert suggestions, 
+            a built-in spell checker, and professional templates. Our users have access to our easy-to-use 
+            resume creator and career resources.
+        </div>
+    </div>
+</div>
+
+<!--------------------------------------- Feature section ------------------------------------>
+    
+<!-- Features Section -->
+
+<section class="features-section">
+
+    <div class="container">
+
+        <h2 class="section-title">Why Choose ResumePro ?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">AI</div>
+                <h3 class="feature-title">AI-Powered Content</h3>
+                <p class="feature-description">Generate professional resume content tailored to your industry with our advanced AI technology.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <h3 class="feature-title">ATS Optimized</h3>
+                <p class="feature-description">Our templates are designed to pass through Applicant Tracking Systems used by 99% of Fortune 500 companies.</p>
+            </div>
+                
+            <div class="feature-card">
+                <div class="feature-icon">✏</div>
+                <h3 class="feature-title">Expert Templates</h3>
+                <p class="feature-description">Choose from professionally designed templates created by HR experts and career coaches.</p>
+            </div>
+                
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Quick & Easy</h3>
+                <p class="feature-description">Build a complete, professional resume in under 15 minutes with our intuitive builder.</p>
+            </div>
+                
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Smart Analytics</h3>
+                <p class="feature-description">Get insights on how to improve your resume with our built-in analysis tools.</p>
+            </div>
+                
+            <div class="feature-card">
+                <div class="feature-icon">💼</div>
+                <h3 class="feature-title">Job Match</h3>
+                <p class="feature-description">Tailor your resume to specific job descriptions for better application success rates.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!--------------------------------------- Resume Example section ------------------------------------>
+
+<div class="container">
+    <div class="content">
+        <h1>Resume Examples Carousel</h1>
+        <p>Browse through our professionally designed resume templates. Click on any resume to view it in detail.</p>
+    </div>
+    
+    <!-- Resume Examples Section -->
+    <section class="resume-examples">
+        <h2 class="section-title">Professional Resume Examples</h2>
+        <p class="section-subtitle">Choose from our collection of resume templates designed to help you land your dream job. Each template is ATS-friendly and professionally designed.</p>
+        
+        <div class="carousel-container">
+            <div class="carousel-nav">
+                <button class="nav-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Resume cards will be added here by JavaScript -->
+            </div>
+        </div>
+        
+        
+    </section>
+</div>
+
+<!-- Resume Preview Modal -->
+<div class="modal" id="resumeModal">
+    <div class="modal-content">
+        <button class="close-modal" id="closeModal">
+            <i class="fas fa-times"></i>
+        </button>
+        <img src="" alt="Resume Preview" class="modal-image" id="modalImage">
+    </div>
+</div>
+
+<!--------------------------------------- Questions section ------------------------------------>
+
+<div class="questioncontainer">
+    <header class="questionheader">
+        <h1 class="quesheading">Frequently Asked Questions</h1>
+        <p class="subtitle">Find answers to common questions about resumes, CVs, and our resume building platform</p>
+    </header>
+    
+    <div class="faq-container">
+        <div class="search-box">
+            <input type="text" placeholder="Search for questions...">
+            <span class="search-icon">🔍</span>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What is the definition of a resume?</div>
+            <div class="faq-answer">
+                <p>A resume is a formal document that provides a concise overview of your professional background, skills, qualifications, and work experience. Its primary purpose is to convince an employer to invite you for an interview for a specific job.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What is the difference between a CV and a resume?</div>
+            <div class="faq-answer">
+                <p>The main difference is length and purpose. A resume is a brief, customizable summary (typically 1-2 pages) tailored for a specific job application. A Curriculum Vitae (CV) is a comprehensive document (often 3+ pages) detailing your entire academic history, publications, and research, commonly used for academic, scientific, or medical positions.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How do I choose the right resume template?</div>
+            <div class="faq-answer">
+                <p>Choose a template that is clean, professional, and ATS-friendly (avoiding graphics, columns, and complex layouts). Consider your industry: conservative fields like law or finance suit traditional templates, while creative fields like design can handle more modern, visually-oriented layouts.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How far back should a resume go?</div>
+            <div class="faq-answer">
+                <p>Generally, you should list the last 10-15 years of relevant work experience. For most professionals, this means going back 3-4 jobs. Prioritize space for your most recent and impactful roles.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What is an ATS and why is it important for my resume?</div>
+            <div class="faq-answer">
+                <p>An ATS (Applicant Tracking System) is software used by employers to screen and filter resumes before a human sees them. To make your resume ATS-friendly, use standard section headings, incorporate keywords from the job description, and avoid images, tables, and unusual fonts.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How long should my resume be?</div>
+            <div class="faq-answer">
+                <p>For most experienced professionals, a one-page resume is ideal. If you have 10+ years of highly relevant experience or are in academia/science (using a CV), two pages are acceptable. Recent graduates should always aim for one page.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What is the best file format to save my resume?</div>
+            <div class="faq-answer">
+                <p>A PDF is almost always the best choice. It preserves your formatting across different devices and operating systems, ensuring it looks the same to every employer. Only submit a Word document if the job application specifically requests it.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How can I tailor my resume for a specific job?</div>
+            <div class="faq-answer">
+                <p>Carefully review the job description and identify key skills, qualifications, and keywords. Mirror this language in your resume's summary, skills section, and when describing your past job duties and achievements. Remove or de-emphasize experience that isn't relevant to the role.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What contact information should I include?</div>
+            <div class="faq-answer">
+                <p>You must include your full name, phone number, and a professional email address. It is also highly recommended to add your LinkedIn profile URL and your city/state. Do not include your full home address, photo, or personal details like your date of birth.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Should I include a resume summary or an objective?</div>
+            <div class="faq-answer">
+                <p>A resume summary is strongly preferred. It is a 2-3 sentence professional "elevator pitch" that highlights your key experience and skills. A resume objective, which states your career goals, is largely outdated and is typically only used by those with no work experience, like recent graduates.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How do I list my work experience effectively?</div>
+            <div class="faq-answer">
+                <p>For each position, list your job title, company name, city/state, and dates of employment. Use bullet points to describe your responsibilities, starting each with a strong action verb (e.g., "Managed," "Developed," "Increased"). Focus on quantifiable achievements and results, not just duties.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What if I have gaps in my employment history?</div>
+            <div class="faq-answer">
+                <p>Be honest and proactive. You can frame the gap productively by listing the reason (e.g., "Career Break for Full-Time Parenting," "Professional Development") as if it were a job. Focus on any valuable skills you may have gained or courses you took during that time.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How do I handle a career change on my resume?</div>
+            <div class="faq-answer">
+                <p>Use a combination or functional resume format to highlight your transferable skills at the top. In your summary, clearly state your new career objective and how your previous experience provides a unique and valuable perspective. Emphasize skills and achievements that are relevant to the new field.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What skills should I put on my resume?</div>
+            <div class="faq-answer">
+                <p>Include a mix of hard skills (technical, teachable abilities like software proficiency or languages) and soft skills (interpersonal traits like communication or leadership). Always prioritize skills that are mentioned in the job description you are applying for.</p>
+            </div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Is it okay to use the same resume for every job application?</div>
+            <div class="faq-answer">
+                <p>No. While you can have a "master resume" with all your experience, you should always customize a copy for each specific job application. Tailoring your resume to match the job description significantly increases your chances of getting an interview.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contact-section">
+        <h3>Still have questions?</h3>
+        <p>Our resume experts are here to help you create the perfect resume for your career goals.</p>
+        <a href="/contact" class="contact-btn">Contact Support</a>
+    </div>
+
+</div>
+
+<script>
+    function showPopup() {
+        alert("This functionality is under construction") ;
+    }
+</script>
+
+
+
+

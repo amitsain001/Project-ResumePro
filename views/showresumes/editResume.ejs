@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Edit Resume</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="h4 mb-0">Edit Resume</h2>
+      <div>
+        <a href="/myresume" class="btn btn-outline-secondary btn-sm">Back</a>
+        <a href="/resumes/<%= resume._id %>" class="btn btn-outline-primary btn-sm">Preview</a>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form action="/resumes/<%= resume._id %>/update" method="POST" class="row g-3" enctype="multipart/form-data">
+
+          <div class="col-12">
+            <label class="form-label">Full name</label>
+            <input name="fullName" class="form-control" value="<%= resume.fullName || '' %>" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" value="<%= resume.email || '' %>">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Phone</label>
+            <input name="phone" class="form-control" value="<%= resume.phone || '' %>">
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Summary</label>
+            <textarea name="summary" class="form-control" rows="4"><%= resume.summary || '' %></textarea>
+          </div>
+
+          <% if (['creative', 'designed'].includes(resume.templateType )) { %>
+            <div class="col-12">
+              <label class="form-label">Template Image (optional)</label>
+              <input type="file" name="profileImage" class="form-control">
+
+              <% if (resume.profileImage) { %>
+                <div class="mt-2">
+                  <p class="text-muted small mb-1">Current image:</p>
+                  <img src="<%= resume.profileImage %>" alt="template image" style="width:120px; border-radius:6px;">
+                </div>
+              <% } %>
+            </div>
+          <% } %> 
+
+          <div class="col-md-6">
+            <label class="form-label">Template</label>
+            <select name="templateType" class="form-select">
+              <% for (const key in templateMap) { %>
+                <option value="<%= key %>" <%= (resume.templateType === key) ? 'selected' : '' %>><%= key %></option>
+              <% } %>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Skills (comma separated)</label>
+            <input name="skills" class="form-control" value="<%= (resume.skills && resume.skills.join(',')) || '' %>">
+            <div class="form-text">Example: JavaScript, Node.js, MongoDB</div>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Education (JSON)</label>
+            <textarea name="education" class="form-control" rows="5"><%= JSON.stringify(resume.education || [], null, 2) %></textarea>
+            <div class="form-text">Edit as JSON array if needed. Or leave as-is.</div>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Experience (JSON)</label>
+            <textarea name="experience" class="form-control" rows="5"><%= JSON.stringify(resume.experience || [], null, 2) %></textarea>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Projects (JSON)</label>
+            <textarea name="projects" class="form-control" rows="4"><%= JSON.stringify(resume.projects || [], null, 2) %></textarea>
+          </div>
+
+          <div class="col-12 d-flex justify-content-end gap-2">
+            <a href="/myresume" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

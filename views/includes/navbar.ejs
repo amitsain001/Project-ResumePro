@@ -1,0 +1,59 @@
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/resume">
+            <i class="fa-solid fa-kaaba"></i>
+            <b class="title">ResumePro</b>
+        </a>
+        
+        <!-- Mobile toggle button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <div class="navoptions">
+                <div class="home navlist"><a href="/resume">Home</a></div>
+                <div class="buildresume navlist"><a href="/build">Build Resume</a></div>
+                <div class="myresume navlist"><a href="/myresume">My Resume</a></div>
+                <div class="templates navlist"><a href="/build">Templates</a></div>
+                <div class="contact navlist"><a href="/contact">Contact</a></div>
+            </div>
+                
+            <div class="authenticationbtn">
+
+                <% if ( !currUser ) { %>
+                
+                    <form method="GET" action="/resume/login">
+                        <button class="btn login" type="submit">LogIn</button>
+                    </form>
+
+                <% } %>
+
+                <% if ( !currUser ) { %>
+            
+                    <form method="GET" action="/resume/signup">
+                        <button class="btn login" type="submit">SignUp</button>
+                    </form>
+                
+                <% } %>
+
+                <% if ( currUser ) { %> 
+                    <form method="GET" action="/resume/logout">
+                        <button class="btn login" type="submit">Logout</button>
+                    </form>
+                <% } %>
+            
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+
+
+
+
