@@ -85,10 +85,6 @@ async function main() {
     await mongoose.connect (dburl) ;
 }
 
-app.get ( "/" , (req , res) => {
-    res.send ("Welcome to ResumePro") ;
-}); 
-
 main()
 .then( () => {
     console.log("connected to database") ;
@@ -96,6 +92,10 @@ main()
 .catch ( (err) => {
     console.log(err) ;
 }) ;
+
+app.get ( "/" , (req , res) => {
+    res.render ( "./layouts/boilerplate.ejs") ;
+}); 
 
 app.use("/" , resume) ;
 app.use("/" , user) ;
