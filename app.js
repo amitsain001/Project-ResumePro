@@ -3,17 +3,22 @@ if ( process.env.NODE_ENV != "production" ) {
 }
 
 const express = require ("express") ;
+const app = express() ;
+
+// If you're behind a proxy (Render, Heroku, etc.)
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); // trust first proxy
+}
+
 const mongoose = require ("mongoose") ;
 const path = require("path") ;
 const methodOverride = require("method-override");
-// const mongo_url = 'mongodb://127.0.0.1:27017/resumepro' ;
 const dburl = process.env.ATLASDB_URL ;
 const ejsMate = require ("ejs-mate");
 const session = require('express-session') ;
 const MongoStoreImport = require("connect-mongo");
 const MongoStore = MongoStoreImport.default || MongoStoreImport;
 const flash = require('connect-flash');
-const app = express() ;
 const ExpressError = require ("./public/utils/ExpressError") ;
 const User = require ("./models/user.js") ;
 const passport = require('passport');
