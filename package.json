@@ -80,9 +80,7 @@
 
     "path": "^0.12.7",
 
-    "puppeteer": "^24.26.1",
-
-    "puppeteer-core": "^24.26.1",
+    "puppeteer": "^24.32.1",
 
     "session-file-store": "^1.5.0"
 

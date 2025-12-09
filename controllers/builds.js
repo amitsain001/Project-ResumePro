@@ -158,11 +158,17 @@ module.exports.downloadresume = async (req, res) => {
       });
     });
 
-    // ✅ Launch Puppeteer
+    // ✅ Launch Puppeteer (Render / Docker friendly)
     const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      headless: true, // or "new" for latest puppeteer versions
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH, // set in Dockerfile
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+      ],
     });
+
     const page = await browser.newPage();
 
     // ✅ Load HTML content
