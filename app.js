@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+console.log("🚀 App starting...");
+console.log("Mongo URL (Render):", process.env.ATLASDB_URL);
+
 const express = require ("express") ;
 const app = express() ;
 
