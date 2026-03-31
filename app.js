@@ -29,6 +29,7 @@ const user = require("./routes/user.js") ;
 const resume = require("./routes/resume.js") ;
 const build = require("./routes/build.js") ;
 const contact = require("./routes/contact.js") ;
+const atsRoutes = require("./routes/ats.js");
 
 app.set ( "view engine", "ejs");                                // Setting ejs
 app.set ( "views" , path.join ( __dirname , "views" )); 
@@ -107,6 +108,7 @@ app.use("/" , resume) ;
 app.use("/" , user) ;
 app.use("/" , build) ;
 app.use("/" , contact) ;
+app.use("/api/ats", atsRoutes);
 
 //----------------------------------------------------------------------------------------------------------
 
